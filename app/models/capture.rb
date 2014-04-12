@@ -9,7 +9,7 @@ class Capture
     :path           => 'captures/:id/:style.:extension',
     :storage        => :s3,
     :url            => 'https://s3.amazonaws.com/digsouth/',
-    :s3_credentials => Proc.new{|a| {:bucket => "digsouth", :access_key_id => ACCESS_KEY, :secret_access_key => SECRET_KEY} },
+    :s3_credentials => Proc.new{|a| a.instance.s3_credentials },
     :styles => {
       :original => ['1920x1680>', :jpg],
       :small    => ['100x100#',   :jpg],
@@ -19,4 +19,8 @@ class Capture
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
+
+  def s3_credentials
+    {:bucket => "digsouth", :access_key_id => ACCESS_KEY, :secret_access_key => SECRET_KEY}
+  end
 end

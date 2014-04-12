@@ -5,10 +5,12 @@ class CapturesController < ApplicationController
       params[:capture].delete :avatar
       @capture = Capture.new(params[:capture])
 
-      # Decode and save to AWS
-      decoded_data = Base64.decode64(avatar)
-      data = StringIO.new(decoded_data)
-      @capture.avatar = data
+      if avatar
+        # Decode and save to AWS
+        decoded_data = Base64.decode64(avatar)
+        data = StringIO.new(decoded_data)
+        @capture.avatar = data
+      end
 
       if @capture.save
         data = {response: "success", errors: 'success' }
@@ -21,5 +23,11 @@ class CapturesController < ApplicationController
       data = {response: "error", errors: 'No Data' }
       render json: data, status: :unprocessable_entity
     end
+  end
+
+  def todays
+    result = (0.Capture.count-1).sort_by{rand}.slice(0, 1).collect! do |i| Capture.skip(i).first end
+    data = {response: 'success', errors: '', value: result.first.avatar.url}
+    render json: data
   end
 end

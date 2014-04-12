@@ -2,7 +2,7 @@ class TransfersController < ApplicationController
   def create
     @user = User.find params[:transfer][:user_id]
     @merchant = Merchant.find_by(:devise => params[:transfer][:devise_id])
-    @angel = Angel.find_by(:devise => 'angel')
+    @angel = Angel.find_by(:devise => 'angel') # for the demo, hardcoded the first angel
     amount = params[:transfer][:amount].to_f
 
     if @user.rule == "Round off to next dollar"

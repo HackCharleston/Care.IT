@@ -3,7 +3,7 @@ class MerchantsController < ApplicationController
     @merchant = Merchant.new(params[:merchant])
 
     stripe = Stripe::Recipient.create(
-      :name => @merchant.name,
+      :name => @merchant.name + " " + @merchant.name,
       :email => @merchant.email,
       :type => "individual",
       :tax_id => "000000000",#@merchant.tax_id,
@@ -27,7 +27,9 @@ class MerchantsController < ApplicationController
 
   def index
     # Considering only 1 angel for the demo
-    value = Angel.first.transfers.sum{|a| a.angel_transfer.to_f}.to_s.rjust(7, '0')
+    angel = Angel.first.transfers.sum{|a| a.angel_transfer.to_f}
+    value = (1098234 + angel).to_s.rjust(7, '0')
+
     data = {response: "success", errors: '', value: value }
     render json: data
   end
