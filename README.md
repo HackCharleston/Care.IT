@@ -1,4 +1,6 @@
-# Built for **Low Country Open Land Trust**
+# Built for **_Low Country Open Land Trust_**
+
+## Let the angel keep the change
 ![alt text](http://www.lolt.org/images/header/logo.png "Low Country Open Land Trust")
 
 ## Prerequisites:

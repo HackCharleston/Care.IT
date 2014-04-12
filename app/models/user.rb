@@ -35,8 +35,7 @@ class User
   has_many :captures
 
   def s3_credentials
-    # {:bucket => "digsouth", :access_key_id => ACCESS_KEY, :secret_access_key => SECRET_KEY}
-    {:bucket => "digsouth", :access_key_id => "AKIAJ2JAJCRFE65F6HWQ", :secret_access_key => "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"}
+    {:bucket => "digsouth", :access_key_id => ACCESS_KEY, :secret_access_key => SECRET_KEY}
   end
 
   before_create do |user|

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
           id: @user.id.to_s,
           name: @user.first_name + " " + @user.middle_name + " " + @user.last_name,
           username: @user.username,
-          image_url: @user.avatar.url,
+          image_url: 'https://s3-us-west-2.amazonaws.com/digsouth' + @user.avatar.url.to_s.split('digsouth').last,
           finger: @user.finger,
           errors: ''
         }
@@ -30,9 +30,8 @@ class UsersController < ApplicationController
         data = {
           response: 'success',
           id: @user.id.to_s,
-          response: 'success',
           name: @user.first_name + " " + @user.middle_name + " " + @user.last_name,
-          image_url: @user.avatar.url,
+          image_url: 'https://s3-us-west-2.amazonaws.com/digsouth' + @user.avatar.url.to_s.split('digsouth').last,
           errors: ''
         }
       else
