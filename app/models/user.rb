@@ -14,7 +14,7 @@ class User
   field :card_token, type: String
   field :email, type: String, default: 'admin@care.it'
   field :finger_id, type: String
-  field :finger, type: Boolean, defualt: false
+  field :finger, type: Boolean, default: false
 
   has_mongoid_attached_file :avatar,
     :path           => 'profile/:id/:style.:extension',
@@ -35,7 +35,8 @@ class User
   has_many :captures
 
   def s3_credentials
-    {:bucket => "digsouth", :access_key_id => ACCESS_KEY, :secret_access_key => SECRET_KEY}
+    # {:bucket => "digsouth", :access_key_id => ACCESS_KEY, :secret_access_key => SECRET_KEY}
+    {:bucket => "digsouth", :access_key_id => "AKIAJ2JAJCRFE65F6HWQ", :secret_access_key => "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"}
   end
 
   before_create do |user|
