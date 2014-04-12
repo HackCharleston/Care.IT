@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 48f76057f425ab5c3bb147f3d71c3d36d951159f
+  specs:
+    stripe (1.11.0)
+      json (~> 1.8.1)
+      mime-types (~> 1.25)
+      rest-client (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -96,6 +105,8 @@ GEM
     rake (10.2.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -117,3 +128,4 @@ DEPENDENCIES
   mongoid
   mongoid-paperclip
   rails (= 3.2.14)
+  stripe!
