@@ -5,7 +5,9 @@ Digsouth::Application.routes.draw do
   resources :transfers
 
   resources :users do
-    get :save_finger
+    collection do
+      post :save_finger
+    end
   end
 
   resources :merchants

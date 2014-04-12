@@ -51,14 +51,13 @@ class UsersController < ApplicationController
   end
 
   def save_finger
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @user.finger_id = params[:finger_id]
-      @user.finger = params[:finger]
+    if params[:user][:name]
+      @user = User.where(:username => params[:user][:name]).first
+      @user.finger = true #params[:user][:finger]
       @user.save
       data = {response: 'success', errors: ''}
     else
-      data = {response: 'error', errors: 'No User Id'}
+      data = {response: 'error', errors: 'No Username in the request'}
     end
     render json: data
   end
