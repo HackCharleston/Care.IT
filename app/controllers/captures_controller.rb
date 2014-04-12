@@ -1,6 +1,11 @@
 class CapturesController < ApplicationController
   def create
     if params[:capture]
+      username = params[:capture][:username]
+      params[:capture].delete :username
+
+      params[:capture][:user_id] = User.where(:username => username).first.id
+
       avatar = params[:capture][:avatar]
       params[:capture].delete :avatar
       @capture = Capture.new(params[:capture])
